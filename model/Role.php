@@ -109,8 +109,8 @@ class Role
             JOIN role_perm AS t3 ON t1.role_id = t3.role_id
             WHERE t1.role_id = :role_id";
         $sth = $db->conn->prepare($sql);
-        $sth->bindParam(":role_id", $role_id, PDO::PARAM_INT);
         foreach ($roles as $role_id) {
+            $sth->bindParam(":role_id", $role_id, PDO::PARAM_INT);
             $sth->execute();
         }
         return true;
